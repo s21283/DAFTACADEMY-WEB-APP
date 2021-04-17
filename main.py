@@ -11,7 +11,7 @@ class HelloResp(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello world"}
 
 
 @app.get("/counter")
@@ -23,3 +23,27 @@ def counter():
 @app.get("/hello/{name}", response_model=HelloResp)
 def hello_name_view(name: str):
     return HelloResp(msg=f"Hello {name}")
+
+@app.get("/method")
+def root():
+    return {"message": "GET"}
+
+@app.put("/method")
+def root():
+    return {"message": "PUT"}
+
+@app.delete("/method")
+def root():
+    return {"message": "DELETE"}
+
+@app.options("/method")
+def root():
+    return {"message": "OPTIONS"}
+
+@app.post("/method", status_code=201)
+def root():
+    return {"message": "POST"}
+
+@app.get("/auth")
+def root():
+    return {"message": "GET"}
