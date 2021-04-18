@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
+import hashlib
 
 app = FastAPI()
 app.counter = 0
@@ -24,26 +25,35 @@ def counter():
 def hello_name_view(name: str):
     return HelloResp(msg=f"Hello {name}")
 
+
 @app.get("/method")
 def root():
     return {"method": "GET"}
+
 
 @app.put("/method")
 def root():
     return {"method": "PUT"}
 
+
 @app.delete("/method")
 def root():
     return {"method": "DELETE"}
+
 
 @app.options("/method")
 def root():
     return {"method": "OPTIONS"}
 
+
 @app.post("/method", status_code=201)
 def root():
     return {"method": "POST"}
 
-@app.get("/auth", )
-def root():
-    return {"message": "GET"}
+
+@app.get("/auth", status_code=204)
+def root(password, password_hash):
+    if not hashlib.sha512(password.encode('utf-8')).hexdigest() == password_hash:
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED)
+    else:
+        return
