@@ -11,7 +11,7 @@ class HelloResp(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "Hello world"}
+    return {"message": "Hello world!"}
 
 
 @app.get("/counter")
@@ -44,6 +44,6 @@ def root():
 def root():
     return {"message": "POST"}
 
-@app.get("/auth")
+@app.get("/auth", )
 def root():
     return {"message": "GET"}

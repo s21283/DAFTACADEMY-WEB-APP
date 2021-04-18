@@ -57,3 +57,8 @@ def test_method_post():
     response = client.post("/method")
     assert response.status_code == 201
     assert response.json() == {"message": "POST"}
+
+def test_auth():
+    response = client.get("/auth")
+    assert response.status_code == 200
+    assert response.json() == {"message": "GET"}
