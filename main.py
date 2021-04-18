@@ -26,23 +26,23 @@ def hello_name_view(name: str):
 
 @app.get("/method")
 def root():
-    return {"message": "GET"}
+    return {"method": "GET"}
 
 @app.put("/method")
 def root():
-    return {"message": "PUT"}
+    return {"method": "PUT"}
 
 @app.delete("/method")
 def root():
-    return {"message": "DELETE"}
+    return {"method": "DELETE"}
 
 @app.options("/method")
 def root():
-    return {"message": "OPTIONS"}
+    return {"method": "OPTIONS"}
 
 @app.post("/method", status_code=201)
 def root():
-    return {"message": "POST"}
+    return {"method": "POST"}
 
 @app.get("/auth", )
 def root():
